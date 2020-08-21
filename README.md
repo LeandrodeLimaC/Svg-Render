@@ -1,5 +1,8 @@
 # svg-render
 
+### Important Notes
+Icons used from [Icons8 characters pack](https://icons8.com.br/icon/pack/characters/material-sharp--blue).
+
 ## Project setup
 ```
 npm install
@@ -19,6 +22,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
