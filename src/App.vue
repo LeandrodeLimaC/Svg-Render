@@ -2,7 +2,7 @@
   <div id="app">
     <svg-sprite/>
     <svg-icon 
-      class="icon--default"
+      class="icon--default icon-animation"
       v-for="icon in icons" 
       :key="icon" 
       :icon="icon"
@@ -57,9 +57,17 @@ body{
   height: 100%;
   margin: 0;
 }
+#app{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .icon--default{
-  margin:10px;
+  cursor: pointer;
+  padding: 10px;
   color: #3b4252;
-  font-size:26px
+  font-size: 20px;
 }
 </style>

@@ -26,11 +26,14 @@ export default {
   fill: none!important;
   stroke: currentColor!important;
 }
-svg.icon {
+.icon {
   stroke: none;
   fill: currentColor;
   height: 1.5em;
-  vertical-align: middle;
   width: 1.5em;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 200ms 50ms;
+}
+.icon:hover{
+  font-size: 3.5em;
 }
 </style>
