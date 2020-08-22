@@ -1,12 +1,29 @@
 <template>
   <div id="app">
-    <svg-sprite/>
-    <svg-icon 
-      class="icon--default icon-animation"
-      v-for="icon in icons" 
-      :key="icon" 
-      :icon="icon"
-    /> 
+      <div>
+        <div style="display: flex;
+                    align-items: center;
+                    height: 150px;">
+          <svg-sprite/>
+          <svg-icon 
+            :style="{color: active_color}"
+            class="icon--default icon-animation"
+            v-for="icon in icons" 
+            :key="icon" 
+            :icon="icon"
+          /> 
+        </div>
+        <div style="display: flex">
+          <a href v-for="color in theme_colors" :key="color.name" @click.prevent="changeClass(color.value)">
+            <span 
+              :style="{background:color.value}"
+            />
+          </a>
+          <p style="margin:0" :style="{color: active_color}">
+            {{active_color}}
+          </p>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -19,7 +36,26 @@ export default {
   name: 'App',
   data: function() {
     return {
-      icons: new Array()
+      icons: new Array(),
+      active_color : '#3b4252',
+      theme_colors:[
+        {
+          name : '--primary', 
+          value : '#b48ead'
+        },
+        {
+          name : '--secondary',
+          value : '#88c0d0'
+        },
+        {
+          name : '--thirdary', 
+          value : '#d08770'
+        },
+        {
+          name : '--quadry', 
+          value : '#3b4252'
+        },
+      ]
     }
   },
   components: {
@@ -39,6 +75,12 @@ export default {
         );
       });
       console.log(this.icons)
+    }
+  },
+  methods:{
+    changeClass(color){
+      console.log( color + " Mudou")
+      this.active_color = color
     }
   }
 }
@@ -67,7 +109,14 @@ body{
 .icon--default{
   cursor: pointer;
   padding: 10px;
-  color: #3b4252;
   font-size: 20px;
+}
+span{
+  height: 20px;
+  width: 20px;
+  background: black;
+  display: flex;
+  border-radius: 20px;
+  margin: 0 10px;
 }
 </style>
