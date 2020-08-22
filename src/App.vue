@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <svg-sprite/>
-    <svg-icon icon="pica-pau"/>
+    <svg-icon 
+      class="icon--default"
+      v-for="icon in icons" 
+      :key="icon" 
+      :icon="icon"
+    /> 
   </div>
 </template>
 
@@ -12,20 +17,49 @@ import SvgIcon from '@/mixins/SvgIcon.vue';
 
 export default {
   name: 'App',
+  data: function() {
+    return {
+      icons: new Array()
+    }
+  },
   components: {
     SvgSprite,
     SvgIcon
   },
+   mounted: function(){
+    {
+      require.context(
+          '@/assets/icons',
+          false,
+          /\w+.svg$/i
+      )
+      .keys().forEach(element => {
+        this.icons.push(
+            element.replace(/.svg/i, '').replace(/.\//i, '')   
+        );
+      });
+      console.log(this.icons)
+    }
+  }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html{
+  width: 100%;
+  height: 100%;
+  background-color: #eceff4;
+}
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+.icon--default{
+  margin:10px;
+  color: #3b4252;
+  font-size:26px
 }
 </style>
